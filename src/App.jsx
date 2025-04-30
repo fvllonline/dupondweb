@@ -14,13 +14,13 @@ function App() {
     <div className="font-sans">
       <Header />
         <HeroSection />
-        <AboutUs />
-        <Features />
+        <AboutUs /><Features />
+        {/* 
         <Menu />
         <Shop />
         <ContactForm />
-        <Testimonials />
-      <Footer />
+        <Testimonials /> */}
+      {/* <Footer /> */}
     </div>
   )
 }
