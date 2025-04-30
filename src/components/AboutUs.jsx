@@ -1,36 +1,149 @@
+"use client"
+
+import { useRef, useEffect, useState } from "react"
+import vidAbt from "../assets/vidabt.mp4" // Assurez-vous que le chemin est correct
+
 const AboutUs = () => {
+  const videoRef = useRef(null)
+  const [videoError, setVideoError] = useState(false)
+
+  // Gestion améliorée de la vidéo
+  useEffect(() => {
+    if (videoRef.current) {
+      // Configuration de la vidéo
+      videoRef.current.loop = true
+      videoRef.current.muted = true
+
+      // Tentative de lecture automatique
+      const playVideo = async () => {
+        try {
+          await videoRef.current.play()
+        } catch (error) {
+          console.error("Erreur de lecture vidéo:", error)
+          setVideoError(true)
+        }
+      }
+
+      playVideo()
+    }
+
+    return () => {
+      // Nettoyage lors du démontage du composant
+      if (videoRef.current) {
+        videoRef.current.pause()
+        videoRef.current.src = ""
+        videoRef.current.load()
+      }
+    }
+  }, [])
+
+  // Gestionnaire d'erreur pour la vidéo
+  const handleVideoError = () => {
+    console.error("Erreur de chargement de la vidéo")
+    setVideoError(true)
+  }
+
   return (
-    <section className="py-20 bg-white" id="à-propos">
+    <section className="relative py-24 bg-white overflow-hidden" id="à-propos">
+      {/* Éléments décoratifs inspirés du HeroSection */}
+      <div className="absolute top-20 left-10 w-2 h-2 rounded-full bg-amber-800/40 animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-3 h-3 rounded-full bg-amber-700/30 animate-pulse"></div>
+
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            {/* Image ici */}
-            <div className="bg-[#F5F5DC] h-80 md:h-96 rounded-lg flex items-center justify-center">
-              <span className="text-[#7B3F00]">&lt;!-- Ajoute ton image ici --&gt;</span>
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          {/* Vidéo 1:1 en boucle avec gestion d'erreur */}
+          <div className="w-full lg:w-1/2 aspect-square rounded-2xl overflow-hidden shadow-2xl border-2 border-amber-100 relative bg-amber-50">
+            {!videoError ? (
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                playsInline
+                loop
+                className="w-full h-full object-cover"
+                onError={handleVideoError}
+              >
+                <source src={vidAbt} type="video/mp4" />
+                Votre navigateur ne supporte pas les vidéos HTML5
+              </video>
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-amber-50 p-6 text-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-16 w-16 text-amber-700 mb-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+                <p className="text-amber-800 font-medium">Impossible de charger la vidéo</p>
+                <button
+                  onClick={() => {
+                    setVideoError(false)
+                    if (videoRef.current) {
+                      videoRef.current.load()
+                      videoRef.current.play()
+                    }
+                  }}
+                  className="mt-4 px-4 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                >
+                  Réessayer
+                </button>
+              </div>
+            )}
+
+            {/* Indicateur de lecture */}
+            <div className="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+              Lecture automatique
             </div>
           </div>
 
-          <div className="md:w-1/2 md:pl-12">
-            <p className="text-[#7B3F00] font-medium mb-2">À PROPOS DE NOUS</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#7B3F00] mb-6">
-              Aimeriez-Vous
-              <br />
-              Un Délicieux Café?
+          {/* Contenu texte - Style inspiré du HeroSection */}
+          <div className="w-full lg:w-1/2 lg:pl-8">
+            {/* En-tête avec ligne décorative */}
+            <div className="flex items-center mb-6">
+              <div className="h-[2px] w-12 bg-amber-700 mr-3"></div>
+              <p className="text-amber-800 font-medium text-sm uppercase tracking-[0.2em]">À PROPOS DE NOUS</p>
+            </div>
+
+            {/* Titre avec typographie harmonisée */}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+              <span className="block">Aimeriez-Vous</span>
+              <span className="font-serif italic text-amber-700" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Un Délicieux Café?
+              </span>
             </h2>
-            <p className="text-gray-700 mb-4">
-              Fondé en 2010, le Café Dupond est devenu une institution dans le quartier. Notre mission est simple :
-              offrir un café d'exception dans un cadre chaleureux et convivial.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Nos grains sont soigneusement sélectionnés auprès de producteurs respectueux de l'environnement. Chaque
-              tasse raconte une histoire, celle d'un savoir-faire artisanal et d'une passion pour le café de qualité.
-            </p>
-            <p className="text-[#7B3F00] font-medium italic mb-6">
-              "Le café est une affaire sérieuse qui mérite d'être traitée avec respect et créativité."
-            </p>
-            <p className="text-[#7B3F00] font-medium mb-8">- Vincent Dupond</p>
-            <button className="bg-[#7B3F00] text-white px-6 py-3 rounded hover:bg-[#7B3F00]/90 transition-colors">
-              EN SAVOIR PLUS
+
+            {/* Texte avec bordure subtile comme HeroSection */}
+            <div className="border-l-4 border-amber-200/70 pl-6 mb-8">
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                Fondé en 2010, le Café Dupond est devenu une institution dans le quartier. Notre mission est simple :
+                offrir un café d'exception dans un cadre chaleureux et convivial.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Nos grains sont soigneusement sélectionnés auprès de producteurs respectueux de l'environnement. Chaque
+                tasse raconte une histoire, celle d'un savoir-faire artisanal et d'une passion pour le café de qualité.
+              </p>
+            </div>
+
+            {/* Citation avec style amélioré */}
+            <blockquote className="border-l-4 border-amber-700/50 pl-6 my-8">
+              <p className="text-amber-800/90 text-lg italic font-medium">
+                "Le café est une affaire sérieuse qui mérite d'être traitée avec respect et créativité."
+              </p>
+              <footer className="text-amber-700 font-medium mt-2">— Vincent Dupond</footer>
+            </blockquote>
+
+            {/* Bouton avec effet comme HeroSection */}
+            <button className="group relative overflow-hidden bg-gradient-to-r from-amber-700 to-amber-600 text-white px-8 py-3.5 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-amber-900/30">
+              <span className="relative z-10">EN SAVOIR PLUS</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
             </button>
           </div>
         </div>
@@ -39,4 +152,4 @@ const AboutUs = () => {
   )
 }
 
-export default AboutUs
+export default AboutUs;

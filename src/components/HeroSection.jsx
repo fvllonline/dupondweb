@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { ChevronDown, Coffee, CupSoda } from "lucide-react"
 import herobg from "../assets/herobg.jpg"
+import { FiClock, FiCoffee } from "react-icons/fi";
+import { GiChocolateBar } from "react-icons/gi";
 
 const HeroSection = () => {
   const [scrolled, setScrolled] = useState(0)
@@ -107,34 +109,36 @@ const HeroSection = () => {
                 <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
                   <Coffee className="w-10 h-10 text-amber-800 mx-auto mb-2" />
                   <p className="text-amber-900 font-bold">DEPUIS</p>
-                  <p className="text-amber-800 text-2xl font-serif">1987</p>
+                  <p className="text-amber-800 text-2xl font-serif">2022</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden md:flex relative">
-            <div className="w-[180px] h-[180px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
-              <div className="w-[170px] h-[170px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
-                <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-                  <Coffee className="w-10 h-10 text-amber-800 mx-auto mb-2" />
-                  <p className="text-amber-900 font-bold">DEPUIS</p>
-                  <p className="text-amber-800 text-2xl font-serif">1987</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="hidden md:flex relative">
-            <div className="w-[180px] h-[180px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
-              <div className="w-[170px] h-[170px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
-                <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-                  <Coffee className="w-10 h-10 text-amber-800 mx-auto mb-2" />
-                  <p className="text-amber-900 font-bold">DEPUIS</p>
-                  <p className="text-amber-800 text-2xl font-serif">1987</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+{/* Badge - Horaires */}
+<div className="hidden md:flex relative">
+  <div className="w-[180px] h-[180px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
+    <div className="w-[170px] h-[170px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
+      <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
+        <FiClock className="w-10 h-10 text-amber-800 mx-auto mb-2" /> {/* Icône horloge */}
+        <p className="text-amber-900 font-bold">HORAIRES</p>
+        <p className="text-amber-800 text-xl font-serif">7h30 - 00h</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* Badge - Spécialité Chocolat */}
+<div className="hidden md:flex relative">
+  <div className="w-[180px] h-[180px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
+    <div className="w-[170px] h-[170px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
+      <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
+        <GiChocolateBar className="w-10 h-10 text-amber-800 mx-auto mb-2" /> {/* Nouvelle icône chocolat */}
+        <p className="text-amber-900 font-bold">NOTRE FIERTÉ</p>
+        <p className="text-amber-800 text-xl font-serif">Chocolat <br />Artisanal</p>
+      </div>
+    </div>
+  </div>
+</div>        
         </div>
       </div>
 
