@@ -12,11 +12,7 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <div className="font-sans">
-      <br />
-      <br />
-      <br />
       <Header />
-      <main>
         <HeroSection />
         <AboutUs />
         <Features />
@@ -24,7 +20,6 @@ function App() {
         <Shop />
         <ContactForm />
         <Testimonials />
-      </main>
       <Footer />
     </div>
   )
