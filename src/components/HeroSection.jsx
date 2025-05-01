@@ -235,16 +235,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Élément décoratif - Flèche de défilement */}
-      <div className="absolute bottom-24 md:bottom-32 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center">
-          <p className="text-amber-200 text-xs uppercase tracking-widest mb-2">Découvrir</p>
-          <div className="w-12 h-12 rounded-full border border-amber-300/30 flex items-center justify-center animate-bounce backdrop-blur-sm bg-amber-900/20">
-            <ChevronDown className="h-5 w-5 text-amber-200" />
-          </div>
-        </div>
-      </div>
-
       {/* Éléments décoratifs - Particules améliorées */}
       <div
         className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-amber-300/40 animate-pulse"
