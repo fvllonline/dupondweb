@@ -109,7 +109,7 @@ const HeroSection = () => {
                 <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
                   <Coffee className="w-10 h-10 text-amber-800 mx-auto mb-2" />
                   <p className="text-amber-900 font-bold">DEPUIS</p>
-                  <p className="text-amber-800 text-2xl font-serif">2022</p>
+                  <p className="text-amber-800 text-2xl font-serif">2021</p>
                 </div>
               </div>
             </div>

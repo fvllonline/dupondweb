@@ -1,30 +1,41 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Star, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Quote } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Quote, User } from "lucide-react"
+
+// Import des images et vidéos depuis le dossier assets
+import pdpRym from "../assets/pdprym.jpg"
+import pdpPeche from "../assets/pdppeche.jpg"
+import pdpRita from "../assets/pdprita.jpg"
+import vidRym from "../assets/vidrym.mp4"
+import vidPeche from "../assets/vidpeche.mp4"
+import vidRita from "../assets/vidrita.mp4"
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sophie Martin",
-      role: "Cliente fidèle",
+      name: "Ghita Akesbi",
+      role: "Consultante RH , Owner TrendyLab",
       text: "Le Café Dupond est devenu mon refuge quotidien. L'ambiance y est chaleureuse et le café est tout simplement exceptionnel. Je recommande particulièrement leur cappuccino qui est le meilleur de la ville.",
-      videoUrl: "/videos/testimonial1.mp4", // Remplacez par vos URLs de vidéos
-      rating: 5
+      videoUrl: vidRita, // Vidéo de Rita importée
+      profileImage: pdpRita, // Photo de Rita importée
+      rating: 5,
     },
     {
-      name: "Thomas Dubois",
-      role: "Entrepreneur",
+      name: "Rym Fadel",
+      role: "Décoratrice",
       text: "J'organise régulièrement des réunions professionnelles au Café Dupond. Le cadre est idéal, le service impeccable et leurs pâtisseries sont un vrai plus pour impressionner mes clients. Un lieu incontournable.",
-      videoUrl: "/videos/testimonial2.mp4",
-      rating: 5
+      videoUrl: vidRym, // Vidéo de Rym importée
+      profileImage: pdpRym, // Photo de Rym importée
+      rating: 5,
     },
     {
-      name: "Marie Leroy",
-      role: "Blogueuse culinaire",
+      name: "Malika Bennani",
+      role: "Personnalité publique",
       text: "En tant que passionnée de gastronomie, je suis très exigeante sur la qualité. Le Café Dupond répond parfaitement à mes attentes avec leurs cafés d'origine soigneusement sélectionnés et leur service attentionné.",
-      videoUrl: "/videos/testimonial3.mp4",
-      rating: 5
+      videoUrl: vidPeche, // Vidéo de Peche importée
+      profileImage: pdpPeche, // Photo de Peche importée
+      rating: 5,
     },
   ]
 
@@ -33,6 +44,8 @@ const Testimonials = () => {
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [videoError, setVideoError] = useState(false)
+  const [profileImageError, setProfileImageError] = useState({})
 
   // Gérer la lecture/pause de la vidéo
   const togglePlay = () => {
@@ -41,7 +54,10 @@ const Testimonials = () => {
         videoRef.current.pause()
         setIsPlaying(false)
       } else {
-        videoRef.current.play()
+        videoRef.current.play().catch((err) => {
+          console.error("Erreur de lecture vidéo:", err)
+          setVideoError(true)
+        })
         setIsPlaying(true)
       }
     }
@@ -62,7 +78,7 @@ const Testimonials = () => {
       setIsPlaying(false)
       const newIndex = (activeIndex - 1 + testimonials.length) % testimonials.length
       setActiveIndex(newIndex)
-      
+
       // Réinitialiser l'état de transition après l'animation
       setTimeout(() => {
         setIsTransitioning(false)
@@ -77,7 +93,7 @@ const Testimonials = () => {
       setIsPlaying(false)
       const newIndex = (activeIndex + 1) % testimonials.length
       setActiveIndex(newIndex)
-      
+
       // Réinitialiser l'état de transition après l'animation
       setTimeout(() => {
         setIsTransitioning(false)
@@ -85,204 +101,250 @@ const Testimonials = () => {
     }
   }
 
+  // Gérer l'erreur de chargement d'image de profil
+  const handleProfileImageError = (index) => {
+    setProfileImageError((prev) => ({ ...prev, [index]: true }))
+  }
+
   // Réinitialiser la vidéo lorsque le témoignage actif change
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load()
       setIsPlaying(false)
+      setVideoError(false)
     }
   }, [activeIndex])
 
   return (
-    <section className="py-24 bg-gradient-to-b from-amber-900/90 via-amber-800/80 to-amber-900/90 relative overflow-hidden" id="temoignages">
-      {/* Overlay et motifs */}
-      <div className="absolute inset-0 bg-black/30 mix-blend-multiply"></div>
-      <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=')] bg-repeat"></div>
-      
-      {/* Particules décoratives */}
-      <div
-        className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-white/40 animate-pulse"
-        style={{ animationDelay: "0.5s" }}
-      ></div>
-      <div
-        className="absolute top-1/3 right-1/4 w-3 h-3 rounded-full bg-white/30 animate-pulse"
-        style={{ animationDelay: "1.2s" }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-white/40 animate-pulse"
-        style={{ animationDelay: "0.8s" }}
-      ></div>
+    <section className="py-24 bg-gradient-to-b from-amber-50 to-white relative overflow-hidden" id="temoignages">
+      {/* Motif de fond subtil */}
+      <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzdCM0YwMCIvPjwvc3ZnPg==')] bg-repeat"></div>
 
-      {/* Badge AVIS en haut à gauche */}
-      <div className="hidden md:flex absolute top-8 left-8 z-20">
-        <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
-          <div className="w-[112px] h-[112px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
-            <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-              <Star className="w-6 h-6 fill-amber-800 text-amber-800 mx-auto mb-1" />
-              <p className="text-amber-900 font-bold text-sm">AVIS</p>
-              <p className="text-amber-800 text-lg font-serif">★★★★★</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Éléments décoratifs */}
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-amber-100/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           {/* En-tête avec ligne décorative */}
-          <div className="flex items-center justify-center mb-6">
-            <div className="h-[2px] w-12 bg-amber-200 mr-3"></div>
-            <p className="text-amber-200 font-medium text-sm uppercase tracking-[0.2em]">TÉMOIGNAGES</p>
-            <div className="h-[2px] w-12 bg-amber-200 ml-3"></div>
+          <div className="inline-block rounded-full bg-amber-100 px-4 py-1.5 mb-6 border border-amber-200/50">
+            <p className="text-amber-800 font-medium text-sm tracking-wider">TÉMOIGNAGES</p>
           </div>
-          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 mb-6">
             Ce Que Nos Clients{" "}
-            <span 
-              className="font-serif italic text-amber-200" 
-              style={{ fontFamily: "'Playfair Display', serif", textShadow: "0 2px 10px rgba(0,0,0,0.2)" }}
-            >
-              Disent
+            <span className="font-serif italic text-amber-700" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Adorent
             </span>
           </h2>
-          
-          {/* Texte avec bordure subtile */}
-          <div className="max-w-2xl mx-auto border-l-4 border-amber-200/70 pl-6 mb-10">
-            <p className="text-white/80 text-lg text-left">
-              Découvrez les expériences de nos clients fidèles qui partagent leur amour pour notre café et nos services.
-            </p>
-          </div>
+
+          <p className="text-amber-800/80 max-w-2xl mx-auto text-lg mb-8">
+            Découvrez les expériences de nos clients fidèles qui partagent leur amour pour notre café et nos services.
+          </p>
         </div>
 
-        {/* Nouveau design de témoignage */}
-        <div className="max-w-5xl mx-auto relative">
-          {/* Guillemets décoratifs */}
-          <div className="absolute -top-16 -left-8 md:-left-16 text-amber-200/20 z-0">
-            <Quote className="w-24 h-24 md:w-32 md:h-32" />
-          </div>
-          
-          {/* Conteneur principal */}
-          <div className="backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 overflow-hidden relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
-              {/* Vidéo */}
-              <div className="relative h-[300px] md:h-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 to-transparent z-10"></div>
-                
-                <video
-                  ref={videoRef}
-                  src={testimonials[activeIndex].videoUrl || "/placeholder-video.mp4"}
-                  className={`w-full h-full object-cover transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
-                  muted={isMuted}
-                  playsInline
-                  loop
-                  onError={(e) => console.error("Erreur vidéo:", e)}
-                />
-                
-                {/* Contrôles vidéo */}
-                <div className="absolute bottom-4 left-4 flex items-center gap-3 z-20">
-                  <button 
-                    onClick={togglePlay}
-                    className="w-10 h-10 rounded-md bg-white/30 backdrop-blur-sm flex items-center justify-center hover:bg-white/50 transition-colors"
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-5 h-5 text-white" />
-                    ) : (
-                      <Play className="w-5 h-5 text-white" />
-                    )}
-                  </button>
-                  
-                  <button 
-                    onClick={toggleMute}
-                    className="w-10 h-10 rounded-md bg-white/30 backdrop-blur-sm flex items-center justify-center hover:bg-white/50 transition-colors"
-                  >
-                    {isMuted ? (
-                      <VolumeX className="w-5 h-5 text-white" />
-                    ) : (
-                      <Volume2 className="w-5 h-5 text-white" />
-                    )}
-                  </button>
-                </div>
-              </div>
-              
-              {/* Contenu du témoignage */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className={`transition-opacity duration-500 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
-                  {/* Étoiles */}
-                  <div className="flex gap-1 mb-6">
-                    {Array.from({ length: testimonials[activeIndex].rating }).map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  
-                  {/* Texte du témoignage */}
-                  <div className="mb-8">
-                    <p className="text-white text-xl md:text-2xl italic leading-relaxed font-light">
-                      "{testimonials[activeIndex].text}"
-                    </p>
-                  </div>
-                  
-                  {/* Informations sur l'auteur */}
-                  <div className="flex items-center">
-                    <div className="w-14 h-14 rounded-md bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-md mr-4">
-                      <span className="text-amber-800 font-bold text-xl">{testimonials[activeIndex].name.charAt(0)}</span>
+        {/* Carousel de témoignages */}
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            {/* Guillemets décoratifs */}
+            <div className="absolute -top-10 -left-4 md:-left-10 text-amber-200 opacity-30 z-0">
+              <Quote className="w-20 h-20 md:w-28 md:h-28" />
+            </div>
+
+            {/* Carte principale */}
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-5">
+                {/* Vidéo (2/5 de l'espace) */}
+                <div className="lg:col-span-2 relative h-[300px] lg:h-auto">
+                  {!videoError ? (
+                    <video
+                      ref={videoRef}
+                      src={testimonials[activeIndex].videoUrl}
+                      className={`w-full h-full object-cover transition-opacity duration-500 ${
+                        isTransitioning ? "opacity-0" : "opacity-100"
+                      }`}
+                      // muted={isMuted}
+                      playsInline
+                      loop
+                      onError={() => setVideoError(true)}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-amber-100 flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <User className="w-16 h-16 text-amber-700 mx-auto mb-4" />
+                        <p className="text-amber-800">Vidéo non disponible</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 
-                        className="font-serif italic text-xl text-amber-200"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                      >
-                        {testimonials[activeIndex].name}
-                      </h3>
-                      <p className="text-white/80 text-sm">{testimonials[activeIndex].role}</p>
+                  )}
+
+                  {/* Overlay dégradé */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                  {/* Contrôles vidéo */}
+                  <div className="absolute bottom-6 left-6 flex items-center gap-3 z-20">
+                    <button
+                      onClick={togglePlay}
+                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30"
+                      disabled={videoError}
+                    >
+                      {isPlaying ? (
+                        <Pause className="w-5 h-5 text-white" />
+                      ) : (
+                        <Play className="w-5 h-5 text-white ml-0.5" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={toggleMute}
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30"
+                      disabled={videoError}
+                    >
+                      {isMuted ? (
+                        <VolumeX className="w-4 h-4 text-white" />
+                      ) : (
+                        <Volume2 className="w-4 h-4 text-white" />
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Badge de notation */}
+                  <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center shadow-lg">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400 mr-1" />
+                    <span className="text-amber-900 font-medium text-sm">{testimonials[activeIndex].rating}.0</span>
+                  </div>
+                </div>
+
+                {/* Contenu du témoignage (3/5 de l'espace) */}
+                <div className="lg:col-span-3 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-amber-50/50 to-white">
+                  <div className={`transition-opacity duration-500 ${isTransitioning ? "opacity-0" : "opacity-100"}`}>
+                    {/* Texte du témoignage */}
+                    <div className="mb-10">
+                      <p className="text-amber-900 text-xl md:text-2xl italic leading-relaxed font-light">
+                        "{testimonials[activeIndex].text}"
+                      </p>
+                    </div>
+
+                    {/* Informations sur l'auteur avec photo de profil */}
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-md mr-5 border-2 border-white overflow-hidden">
+                        {testimonials[activeIndex].profileImage && !profileImageError[activeIndex] ? (
+                          <img
+                            src={testimonials[activeIndex].profileImage || "/placeholder.svg"}
+                            alt={`Photo de ${testimonials[activeIndex].name}`}
+                            className="w-full h-full object-cover"
+                            onError={() => handleProfileImageError(activeIndex)}
+                          />
+                        ) : (
+                          <span className="text-amber-800 font-bold text-xl">
+                            {testimonials[activeIndex].name.charAt(0)}
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <h3
+                          className="font-serif text-xl text-amber-800 font-medium"
+                          style={{ fontFamily: "'Playfair Display', serif" }}
+                        >
+                          {testimonials[activeIndex].name}
+                        </h3>
+                        <p className="text-amber-700/80">{testimonials[activeIndex].role}</p>
+
+                        {/* Étoiles */}
+                        <div className="flex gap-0.5 mt-1">
+                          {Array.from({ length: testimonials[activeIndex].rating }).map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          {/* Navigation */}
-          <div className="flex justify-center mt-8 gap-4">
-            <button 
-              onClick={prevTestimonial}
-              className="group w-12 h-12 rounded-full bg-gradient-to-br from-amber-700 to-amber-600 flex items-center justify-center shadow-lg hover:shadow-amber-900/30 transition-all duration-300"
-              disabled={isTransitioning}
-            >
-              <ChevronLeft className="w-6 h-6 text-white group-hover:-translate-x-0.5 transition-transform" />
-            </button>
-            
-            {/* Indicateurs */}
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (!isTransitioning && index !== activeIndex) {
-                      setIsTransitioning(true)
-                      setIsPlaying(false)
-                      setActiveIndex(index)
-                      setTimeout(() => {
-                        setIsTransitioning(false)
-                      }, 600)
-                    }
-                  }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    index === activeIndex 
-                      ? 'bg-amber-200 w-8' 
-                      : 'bg-white/30 hover:bg-white/50'
-                  }`}
-                  disabled={isTransitioning}
-                  aria-label={`Voir le témoignage de ${testimonials[index].name}`}
-                />
-              ))}
+
+            {/* Navigation */}
+            <div className="flex justify-between items-center mt-8">
+              <button
+                onClick={prevTestimonial}
+                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100"
+                disabled={isTransitioning}
+              >
+                <ChevronLeft className="w-6 h-6 text-amber-700 group-hover:-translate-x-0.5 transition-transform" />
+              </button>
+
+              {/* Indicateurs avec photos de profil miniatures */}
+              <div className="flex items-center gap-3">
+                {testimonials.map((testimonial, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (!isTransitioning && index !== activeIndex) {
+                        setIsTransitioning(true)
+                        setIsPlaying(false)
+                        setActiveIndex(index)
+                        setTimeout(() => {
+                          setIsTransitioning(false)
+                        }, 600)
+                      }
+                    }}
+                    className={`relative transition-all duration-300 ${
+                      index === activeIndex ? "opacity-100 scale-110" : "opacity-60 hover:opacity-80"
+                    }`}
+                    disabled={isTransitioning}
+                    aria-label={`Voir le témoignage de ${testimonial.name}`}
+                  >
+                    <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-amber-200 shadow-sm">
+                      {testimonial.profileImage && !profileImageError[index] ? (
+                        <img
+                          src={testimonial.profileImage || "/placeholder.svg"}
+                          alt={`Photo de ${testimonial.name}`}
+                          className="w-full h-full object-cover"
+                          onError={() => handleProfileImageError(index)}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-amber-100 flex items-center justify-center">
+                          <span className="text-amber-800 font-bold text-xs">{testimonial.name.charAt(0)}</span>
+                        </div>
+                      )}
+                    </div>
+                    {index === activeIndex && (
+                      <div className="absolute -inset-1 border-2 border-amber-300 rounded-full animate-ping opacity-0"></div>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={nextTestimonial}
+                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100"
+                disabled={isTransitioning}
+              >
+                <ChevronRight className="w-6 h-6 text-amber-700 group-hover:translate-x-0.5 transition-transform" />
+              </button>
             </div>
-            
-            <button 
-              onClick={nextTestimonial}
-              className="group w-12 h-12 rounded-full bg-gradient-to-br from-amber-700 to-amber-600 flex items-center justify-center shadow-lg hover:shadow-amber-900/30 transition-all duration-300"
-              disabled={isTransitioning}
-            >
-              <ChevronRight className="w-6 h-6 text-white group-hover:translate-x-0.5 transition-transform" />
-            </button>
+          </div>
+
+          {/* Badges décoratifs */}
+          <div className="hidden lg:block">
+            {/* Badge 1 */}
+            <div className="absolute top-1/4 -right-12 z-20">
+              <div className="w-[100px] h-[100px] rounded-full bg-gradient-to-br from-amber-100 to-white flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500 border border-amber-200/50">
+                <div className="text-center">
+                  <Star className="w-6 h-6 fill-amber-400 text-amber-400 mx-auto" />
+                  <p className="text-amber-800 text-xs font-bold mt-1">EXCELLENTS</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Badge 2 */}
+            <div className="absolute bottom-1/4 -left-12 z-20">
+              <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-500 border border-amber-300/50">
+                <div className="text-center">
+                  <p className="text-amber-900 text-xs font-bold">CLIENTS</p>
+                  <p className="text-amber-800 text-xl font-serif">Satisfaits</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

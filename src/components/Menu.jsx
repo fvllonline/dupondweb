@@ -27,10 +27,10 @@ const Menu = () => {
     { name: "Café Glacé", description: "Espresso, lait froid et glaçons", price: "4.80", image: menu6 },
     { name: "Chocolat Mocha", description: "Chocolat chaud avec une touche d'espresso", price: "5.50", image: menu7 },
     { name: "Latte Vanille", description: "Café latte aromatisé à la vanille", price: "5.00", isNew: true, image: menu8 },
-    { name: "Latte Glacé", description: "Latte servi avec des glaçons", price: "4.80", image: menu9 },
-    { name: "Espresso", description: "L'essence pure du café", price: "2.80", image: menu10 },
-    { name: "Latte Caramel", description: "Café latte avec sirop de caramel", price: "5.00", isNew: true, image: menu11 },
-    { name: "Cortado", description: "Espresso équilibré avec du lait", price: "3.90", image: menu12 },
+    { name: "Formule Déjeuner", description: "Latte servi avec des glaçons", price: "4.80", image: menu9 },
+    { name: "Formule Déjeuner", description: "L'essence pure du café", price: "2.80", image: menu10 },
+    { name: "Formule Déjeuner", description: "Café latte avec sirop de caramel", price: "5.00", isNew: true, image: menu11 },
+    { name: "Formule Déjeuner", description: "Espresso équilibré avec du lait", price: "3.90", image: menu12 },
   ]
 
   const [showAll, setShowAll] = useState(false)

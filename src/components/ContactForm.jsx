@@ -239,19 +239,7 @@ const ContactForm = () => {
               </div>
             </form>
           </div>
-          
-          {/* Badge décoratif comme dans HeroSection */}
-          <div className="hidden md:flex absolute -bottom-10 -right-10 z-20">
-            <div className="w-[180px] h-[180px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500">
-              <div className="w-[170px] h-[170px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
-                <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-                  <Coffee className="w-10 h-10 text-amber-800 mx-auto mb-2" />
-                  <p className="text-amber-900 font-bold">OUVERT</p>
-                  <p className="text-amber-800 text-2xl font-serif">7j/7</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
