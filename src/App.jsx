@@ -21,7 +21,7 @@ function App() {
         {/* 
         <ContactForm />
          */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
