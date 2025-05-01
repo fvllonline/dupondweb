@@ -104,7 +104,7 @@ const Features = () => {
 
                 {/* Titre avec ligne décorative */}
                 <div className="relative mb-4">
-                  <h3 className="text-xl font-semibold text-amber-900 text-center">{feature.title}</h3>
+                  <h3 className="text-xl font-serif italic text-amber-700 text-center">{feature.title}</h3>
                   <div className="h-0.5 w-12 bg-amber-300 mx-auto mt-3 transform origin-center scale-0 group-hover:scale-100 transition-transform duration-300"></div>
                 </div>
 
