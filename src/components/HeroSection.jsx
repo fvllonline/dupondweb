@@ -67,7 +67,7 @@ const HeroSection = () => {
         </div>
 
         {/* Overlay amélioré avec plusieurs couches */}
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-950/80 via-amber-900/70 to-amber-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-700/30 via-amber-700/40 to-amber-550/90" />
         <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
 
