@@ -16,10 +16,11 @@ function App() {
         <AboutUs />
         <Features />
         <Menu />
-        <ContactForm />
-        {/* 
         
-        <Testimonials /> */}
+        <Testimonials />
+        {/* 
+        <ContactForm />
+         */}
       {/* <Footer /> */}
     </div>
   )
