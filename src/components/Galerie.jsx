@@ -291,52 +291,71 @@ const Galerie = () => {
         </div>
 
         {/* Filtres */}
-        <div
-          className={`flex justify-center mb-10 transform transition-all duration-1000 ${
-            isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
-          style={{ transitionDelay: "200ms" }}
-        >
-          <div className="bg-white rounded-full shadow-md p-1 flex items-center">
-            <button
-              onClick={() => setFilter("all")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                filter === "all" ? "bg-amber-700 text-white shadow-sm" : "text-amber-800 hover:bg-amber-50"
-              }`}
-            >
-              <Grid3X3 className="w-4 h-4" />
-              <span>Tout</span>
-              <span className="bg-amber-100 text-amber-800 text-xs rounded-full px-2 py-0.5 ml-1">
-                {imageCounts.all}
-              </span>
-            </button>
-            <button
-              onClick={() => setFilter("image")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                filter === "image" ? "bg-amber-700 text-white shadow-sm" : "text-amber-800 hover:bg-amber-50"
-              }`}
-            >
-              <ImageIcon className="w-4 h-4" />
-              <span>Photos</span>
-              <span className="bg-amber-100 text-amber-800 text-xs rounded-full px-2 py-0.5 ml-1">
-                {imageCounts.image}
-              </span>
-            </button>
-            <button
-              onClick={() => setFilter("video")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                filter === "video" ? "bg-amber-700 text-white shadow-sm" : "text-amber-800 hover:bg-amber-50"
-              }`}
-            >
-              <Film className="w-4 h-4" />
-              <span>Vidéos</span>
-              <span className="bg-amber-100 text-amber-800 text-xs rounded-full px-2 py-0.5 ml-1">
-                {imageCounts.video}
-              </span>
-            </button>
-          </div>
-        </div>
+        <div 
+  className={`flex justify-center mb-10 transition-all duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] ${
+    isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+  }`}
+  style={{ transitionDelay: "200ms" }}
+>
+  <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-1.5 flex flex-wrap justify-center gap-1.5 border border-gray-100">
+    <button
+      onClick={() => setFilter("all")}
+      className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+        filter === "all" 
+          ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white shadow-md shadow-amber-200/50" 
+          : "text-amber-800 hover:bg-amber-50/70 hover:shadow-sm"
+      }`}
+    >
+      <Grid3X3 className="w-4 h-4 flex-shrink-0" />
+      <span className="whitespace-nowrap">Tout voir</span>
+      <span className={`text-xs rounded-full px-2 py-1 ml-1 ${
+        filter === "all" 
+          ? "bg-white/20 text-white/90" 
+          : "bg-amber-100/80 text-amber-800"
+      }`}>
+        {imageCounts.all}
+      </span>
+    </button>
 
+    <button
+      onClick={() => setFilter("image")}
+      className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+        filter === "image" 
+          ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white shadow-md shadow-amber-200/50" 
+          : "text-amber-800 hover:bg-amber-50/70 hover:shadow-sm"
+      }`}
+    >
+      <ImageIcon className="w-4 h-4 flex-shrink-0" />
+      <span className="whitespace-nowrap">Photos</span>
+      <span className={`text-xs rounded-full px-2 py-1 ml-1 ${
+        filter === "image" 
+          ? "bg-white/20 text-white/90" 
+          : "bg-amber-100/80 text-amber-800"
+      }`}>
+        {imageCounts.image}
+      </span>
+    </button>
+
+    <button
+      onClick={() => setFilter("video")}
+      className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+        filter === "video" 
+          ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white shadow-md shadow-amber-200/50" 
+          : "text-amber-800 hover:bg-amber-50/70 hover:shadow-sm"
+      }`}
+    >
+      <Film className="w-4 h-4 flex-shrink-0" />
+      <span className="whitespace-nowrap">Vidéos</span>
+      <span className={`text-xs rounded-full px-2 py-1 ml-1 ${
+        filter === "video" 
+          ? "bg-white/20 text-white/90" 
+          : "bg-amber-100/80 text-amber-800"
+      }`}>
+        {imageCounts.video}
+      </span>
+    </button>
+  </div>
+</div>
         {/* Grille de la galerie - Images et vidéos plus petites */}
         <div
           className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 transform transition-all duration-1000 ${
