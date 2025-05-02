@@ -136,20 +136,9 @@ const AboutUs = () => {
             )}
 
             {/* Indicateur de lecture */}
-            <div className="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+            {/* <div className="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm">
               Lecture automatique
-            </div>
-
-            {/* Badge décoratif */}
-            <div className="absolute -top-5 -right-5 w-24 h-24 rounded-full bg-gradient-to-br from-amber-300 to-amber-200 flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500 z-10 border border-amber-400/30">
-              <div className="w-[90px] h-[90px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
-                <div className="text-center transform -rotate-12 hover:rotate-0 transition-transform duration-500">
-                  <Coffee className="w-8 h-8 text-amber-800 mx-auto mb-1" />
-                  <p className="text-amber-900 font-bold text-xs">DEPUIS</p>
-                  <p className="text-amber-800 text-lg font-serif">2021</p>
-                </div>
-              </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Contenu texte - Style inspiré du HeroSection */}

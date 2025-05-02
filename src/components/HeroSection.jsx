@@ -26,34 +26,6 @@ const HeroSection = () => {
     setIsVisible(true)
   }, [])
 
-  // Informations rapides avec icônes
-  const quickInfo = [
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "HORAIRES",
-      content: "7h30 - 00h",
-      color: "from-amber-200 to-amber-100",
-    },
-    {
-      icon: <Coffee className="w-5 h-5" />,
-      title: "DEPUIS",
-      content: "2021",
-      color: "from-amber-300 to-amber-200",
-    },
-    {
-      icon: <CandyIcon className="w-5 h-5" />,
-      title: "SPÉCIALITÉ",
-      content: "Chocolat Artisanal",
-      color: "from-amber-200 to-amber-50",
-    },
-    {
-      icon: <MapPin className="w-5 h-5" />,
-      title: "ADRESSE",
-      content: "12 Rue du Café",
-      color: "from-amber-100 to-white",
-    },
-  ]
-
   return (
     <section id="accueil" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Div pour créer un espace entre le header et le contenu - SOLUTION POUR LE RESPONSIVE */}
@@ -204,64 +176,6 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Version mobile des informations */}
-            <div
-              className={`flex flex-wrap justify-center gap-2 lg:hidden mt-4 transition-all duration-1000 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
-              style={{ transitionDelay: "500ms" }}
-            >
-              {quickInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br border border-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center gap-2 shadow-lg transform hover:scale-105 transition-transform duration-300"
-                  style={{
-                    background: `linear-gradient(to bottom right, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05))`,
-                  }}
-                >
-                  <div
-                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br ${info.color} flex items-center justify-center`}
-                  >
-                    {info.icon}
-                  </div>
-                  <div>
-                    <p className="text-amber-200 text-xs font-medium">{info.title}</p>
-                    <p className="text-white text-sm md:text-base font-medium">{info.content}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Barre d'informations rapides en bas */}
-      <div
-        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-900/90 to-amber-800/90 backdrop-blur-md border-t border-amber-700/30 py-4 hidden md:block transition-all duration-1000 ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`}
-        style={{ transitionDelay: "700ms" }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            {quickInfo.map((info, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 group cursor-pointer"
-                onMouseEnter={() => setActiveInfo(index)}
-                onMouseLeave={() => setActiveInfo(null)}
-              >
-                <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br ${info.color} flex items-center justify-center transition-all duration-300 ${activeInfo === index ? "scale-110 shadow-lg" : ""}`}
-                >
-                  {info.icon}
-                </div>
-                <div>
-                  <p className="text-amber-200 text-xs font-medium">{info.title}</p>
-                  <p className="text-white font-medium group-hover:text-amber-200 transition-colors">{info.content}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
@@ -283,12 +197,6 @@ const HeroSection = () => {
         className="absolute top-2/3 right-1/3 w-3 h-3 rounded-full bg-amber-400/20 animate-pulse"
         style={{ animationDelay: "1.5s" }}
       ></div>
-
-      {/* Élément de défilement */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center animate-bounce">
-        <p className="text-white/70 text-sm mb-2">Découvrir</p>
-        <ChevronDown className="w-6 h-6 text-white/70" />
-      </div>
     </section>
   )
 }

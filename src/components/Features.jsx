@@ -78,7 +78,7 @@ const Features = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Image de fond avec overlay */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-90 transition-opacity duration-700">
+              <div className="absolute inset-0 opacity-40 group-hover:opacity-90 transition-opacity duration-700">
                 <img
                   src={feature.imagePath || "/placeholder.svg"}
                   alt={feature.title}
@@ -113,22 +113,6 @@ const Features = () => {
                 <p className="text-amber-800/70 group-hover:text-white/90 text-center mb-6 transition-colors duration-500">
                   {feature.description}
                 </p>
-
-                {/* Bouton "En savoir plus" */}
-                <div className="text-center mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <a href="#" className="inline-flex items-center text-white font-medium transition-colors">
-                    <span className="border-b border-amber-300 pb-0.5">En savoir plus</span>
-                    <svg
-                      className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
               </div>
             </div>
           ))}

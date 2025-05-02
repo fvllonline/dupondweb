@@ -189,7 +189,7 @@ const Testimonials = () => {
         >
           <div className="relative">
             {/* Guillemets décoratifs */}
-            <div className="absolute -top-10 -left-4 md:-left-10 text-amber-200 opacity-30 z-0">
+            <div className="absolute -top-15 -left-5 md:-left-10 text-amber-900 opacity-60 z-0">
               <Quote className="w-20 h-20 md:w-28 md:h-28" />
             </div>
 
@@ -205,7 +205,7 @@ const Testimonials = () => {
                       className={`w-full h-full object-cover transition-opacity duration-500 ${
                         isTransitioning ? "opacity-0" : "opacity-100"
                       }`}
-                      muted={isMuted}
+                      // muted={isMuted}
                       playsInline
                       loop
                       onError={() => setVideoError(true)}
@@ -226,17 +226,17 @@ const Testimonials = () => {
                   <div className="absolute bottom-6 left-6 flex items-center gap-3 z-20">
                     <button
                       onClick={togglePlay}
-                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30 transform hover:scale-110"
+                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border transform hover:scale-110"
                       disabled={videoError}
                     >
                       {isPlaying ? (
-                        <Pause className="w-5 h-5 text-white" />
+                        <Pause className="w-9 h-9 text-white" />
                       ) : (
-                        <Play className="w-5 h-5 text-white ml-0.5" />
+                        <Play className="w-9 h-9 text-white ml-0.5" />
                       )}
                     </button>
 
-                    <button
+                    {/* <button
                       onClick={toggleMute}
                       className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30 transform hover:scale-110"
                       disabled={videoError}
@@ -246,7 +246,7 @@ const Testimonials = () => {
                       ) : (
                         <Volume2 className="w-4 h-4 text-white" />
                       )}
-                    </button>
+                    </button> */}
                   </div>
 
                   {/* Badge de notation */}
@@ -379,7 +379,7 @@ const Testimonials = () => {
             </div>
 
             {/* Badge 2 */}
-            <div className="absolute bottom-1/4 -left-12 z-20">
+            <div className="absolute bottom-2/4 -left-20 z-20">
               <div className="w-[120px] h-[120px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl -rotate-12 hover:rotate-0 transition-transform duration-500 border border-amber-300/50">
                 <div className="text-center">
                   <p className="text-amber-900 text-xs font-bold">CLIENTS</p>
