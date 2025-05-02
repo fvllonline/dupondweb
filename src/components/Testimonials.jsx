@@ -369,7 +369,7 @@ const Testimonials = () => {
           {/* Badges décoratifs */}
           <div className="hidden lg:block">
             {/* Badge 1 */}
-            <div className="absolute top-1/4 -right-12 z-20">
+            <div className="absolute top-2/4 -right-12 z-20">
               <div className="w-[100px] h-[100px] rounded-full bg-gradient-to-br from-amber-100 to-white flex items-center justify-center shadow-xl rotate-12 hover:rotate-0 transition-transform duration-500 border border-amber-200/50">
                 <div className="text-center">
                   <Star className="w-6 h-6 fill-amber-400 text-amber-400 mx-auto" />

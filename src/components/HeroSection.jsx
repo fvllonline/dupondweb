@@ -49,8 +49,6 @@ const HeroSection = () => {
 
         {/* Overlay amélioré avec plusieurs couches */}
         <div className="absolute inset-0 bg-gradient-to-b from-amber-700/30 via-amber-700/40 to-amber-550/90" />
-        <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
 
         {/* Motif de grain de café subtil */}
         <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=')] bg-repeat" />
