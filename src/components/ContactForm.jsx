@@ -270,7 +270,7 @@ const ContactForm = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
-                      <label htmlFor="date" className="block text-white font-medium mb-2 flex items-center">
+                      <label htmlFor="date" className=" text-white font-medium mb-2 flex items-center">
                         <Calendar className="w-4 h-4 mr-2 text-amber-200" />
                         Date
                       </label>
@@ -288,7 +288,7 @@ const ContactForm = () => {
                     </div>
 
                     <div className="group">
-                      <label htmlFor="time" className="block text-white font-medium mb-2 flex items-center">
+                      <label htmlFor="time" className=" text-white font-medium mb-2 flex items-center">
                         <Clock className="w-4 h-4 mr-2 text-amber-200" />
                         Heure
                       </label>
@@ -307,7 +307,7 @@ const ContactForm = () => {
                   </div>
 
                   <div className="group">
-                    <label htmlFor="guests" className="block text-white font-medium mb-2 flex items-center">
+                    <label htmlFor="guests" className=" text-white font-medium mb-2 flex items-center">
                       <Users className="w-4 h-4 mr-2 text-amber-200" />
                       Nombre de personnes
                     </label>
