@@ -78,3 +78,47 @@ button:focus-visible {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Ajout d'une classe pour gérer l'espacement entre le header et le contenu */
+.header-offset {
+  padding-top: var(--header-height, 60px);
+}
+
+/* Animation pour la barre de progression */
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-progress-bar {
+  animation: progress 5s linear;
+}
+
+/* Styles spécifiques pour les très petits écrans */
+@media (max-width: 375px) {
+  .text-xs-smaller {
+    font-size: 0.65rem;
+  }
+
+  .p-xs-smaller {
+    padding: 0.5rem;
+  }
+
+  .mt-xs-larger {
+    margin-top: 5rem;
+  }
+}
+
+/* Styles pour améliorer la lisibilité du texte sur les images de fond */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles pour les transitions fluides */
+.smooth-transition {
+  transition: all 0.3s ease-in-out;
+}

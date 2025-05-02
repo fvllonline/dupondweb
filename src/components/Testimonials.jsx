@@ -42,10 +42,35 @@ const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
-  const videoRef = useRef(null)
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const [videoError, setVideoError] = useState(false)
   const [profileImageError, setProfileImageError] = useState({})
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const sectionRef = useRef(null)
+  const videoRef = useRef(null)
+
+  // Observer pour les animations au défilement
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   // Gérer la lecture/pause de la vidéo
   const togglePlay = () => {
@@ -116,7 +141,11 @@ const Testimonials = () => {
   }, [activeIndex])
 
   return (
-    <section className="py-24 bg-gradient-to-b from-amber-50 to-white relative overflow-hidden" id="temoignages">
+    <section
+      ref={sectionRef}
+      className="py-24 bg-gradient-to-b from-amber-50 to-white relative overflow-hidden"
+      id="temoignages"
+    >
       {/* Motif de fond subtil */}
       <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzdCM0YwMCIvPjwvc3ZnPg==')] bg-repeat"></div>
 
@@ -125,16 +154,24 @@ const Testimonials = () => {
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div
+          className={`text-center mb-16 transform transition-all duration-1000 ${
+            isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
           {/* En-tête avec ligne décorative */}
-          <div className="inline-block rounded-full bg-amber-100 px-4 py-1.5 mb-6 border border-amber-200/50">
+          <div className="inline-block rounded-full bg-amber-100 px-4 py-1.5 mb-6 border border-amber-200/50 transform hover:scale-105 transition-transform duration-300">
             <p className="text-amber-800 font-medium text-sm tracking-wider">TÉMOIGNAGES</p>
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 mb-6">
             Ce Que Nos Clients{" "}
-            <span className="font-serif italic text-amber-700" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Adorent
+            <span
+              className="font-serif italic relative inline-block"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              <span className="relative z-10">Adorent</span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-amber-300/50 rounded-full transform -rotate-1"></span>
             </span>
           </h2>
 
@@ -144,7 +181,12 @@ const Testimonials = () => {
         </div>
 
         {/* Carousel de témoignages */}
-        <div className="max-w-6xl mx-auto">
+        <div
+          className={`max-w-6xl mx-auto transform transition-all duration-1000 ${
+            isInView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+          style={{ transitionDelay: "300ms" }}
+        >
           <div className="relative">
             {/* Guillemets décoratifs */}
             <div className="absolute -top-10 -left-4 md:-left-10 text-amber-200 opacity-30 z-0">
@@ -152,7 +194,7 @@ const Testimonials = () => {
             </div>
 
             {/* Carte principale */}
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden relative z-10">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden relative z-10 transform hover:scale-[1.01] transition-transform duration-500">
               <div className="grid grid-cols-1 lg:grid-cols-5">
                 {/* Vidéo (2/5 de l'espace) */}
                 <div className="lg:col-span-2 relative h-[300px] lg:h-auto">
@@ -163,7 +205,7 @@ const Testimonials = () => {
                       className={`w-full h-full object-cover transition-opacity duration-500 ${
                         isTransitioning ? "opacity-0" : "opacity-100"
                       }`}
-                      // muted={isMuted}
+                      muted={isMuted}
                       playsInline
                       loop
                       onError={() => setVideoError(true)}
@@ -184,7 +226,7 @@ const Testimonials = () => {
                   <div className="absolute bottom-6 left-6 flex items-center gap-3 z-20">
                     <button
                       onClick={togglePlay}
-                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30"
+                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30 transform hover:scale-110"
                       disabled={videoError}
                     >
                       {isPlaying ? (
@@ -196,7 +238,7 @@ const Testimonials = () => {
 
                     <button
                       onClick={toggleMute}
-                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30"
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border border-white/30 transform hover:scale-110"
                       disabled={videoError}
                     >
                       {isMuted ? (
@@ -266,7 +308,7 @@ const Testimonials = () => {
             <div className="flex justify-between items-center mt-8">
               <button
                 onClick={prevTestimonial}
-                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100"
+                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:-translate-x-1"
                 disabled={isTransitioning}
               >
                 <ChevronLeft className="w-6 h-6 text-amber-700 group-hover:-translate-x-0.5 transition-transform" />
@@ -316,7 +358,7 @@ const Testimonials = () => {
 
               <button
                 onClick={nextTestimonial}
-                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100"
+                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:translate-x-1"
                 disabled={isTransitioning}
               >
                 <ChevronRight className="w-6 h-6 text-amber-700 group-hover:translate-x-0.5 transition-transform" />
