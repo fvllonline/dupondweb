@@ -10,21 +10,30 @@ import Footer from "./components/Footer"
 import Galerie from './components/Galerie'
 import AboutDev from './components/AboutDev'
 import ContactDev from './components/ContactDev'
+import { Routes , Route } from 'react-router-dom'
+import DevPage from '../src/components/pages/dev-page'
+import MenuPage from '../src/components/pages/menu-page'
+import HomePage from '../src/components/pages/home-page'
+import GaleriePage from '../src/components/pages/galerie-page'
 
 function App() {
   return (
     <div className="font-sans">
       <Header />
-        <HeroSection />
-        <AboutUs />
-        <Features />
-        <Menu />
-        <Testimonials />
-        <ContactForm />     
-        <Galerie />  
-        {/* <AboutDev />
-        <ContactDev /> */}
+      
+      <Routes>
+        <Route path='/' element={<HomePage /> } ></Route>
+        <Route path='/menu' element={<MenuPage/>} ></Route>
+        <Route path='/galerie' element={<GaleriePage /> } ></Route>
+        <Route path='/developer' element={<DevPage />} ></Route>
+      </Routes>
       <Footer />
+      
+      
+      
+      
+
+              
     </div>
   )
 }

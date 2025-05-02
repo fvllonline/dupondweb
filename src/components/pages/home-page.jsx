@@ -1,5 +1,5 @@
-import HeroSection from "../hero-section"
-import AboutUs from "../about-us"
+import HeroSection from "../HeroSection"
+import AboutUs from "../AboutUs"
 import Features from "../Features"
 import Testimonials from "../Testimonials"
 

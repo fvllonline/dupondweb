@@ -1,31 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Coffee, Menu, X, ChevronDown } from "lucide-react"
+import { Coffee, Menu, X } from "lucide-react"
 import logo from "../assets/logoblanc.png"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeItem, setActiveItem] = useState("Accueil")
   const [scrolled, setScrolled] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-  const navItems = [
-    { name: "Accueil", link: "#accueil" },
-    { name: "À propos", link: "#à-propos" },
-    {
-      name: "Menu",
-      link: "#menu",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: "Cafés Chauds", link: "#cafes-chauds" },
-        { name: "Cafés Froids", link: "#cafes-froids" },
-        { name: "Pâtisseries", link: "#patisseries" },
-      ],
-    },
-    { name: "Boutique", link: "#boutique" },
-    { name: "Contact", link: "#contact" },
-  ]
 
   // Détecte le défilement pour changer l'apparence du header
   useEffect(() => {
@@ -42,72 +26,187 @@ const Header = () => {
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${
         scrolled ? "bg-amber-900/90 backdrop-blur-md shadow-lg py-1" : "bg-black/40 py-1"
       }`}
-      style={{ height: "auto" }} // Forcer une hauteur automatique
+      style={{ height: "auto" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-12 sm:h-14 md:h-16">
-          {" "}
-          {/* Hauteur fixe pour le contenu du header */}
           {/* Logo */}
           <a href="#accueil" className="relative flex items-center group" onClick={() => setActiveItem("Accueil")}>
             <div className="relative h-8 sm:h-10 md:h-12 w-auto mr-2 transition-transform duration-300 group-hover:scale-105">
               <img src={logo || "/placeholder.svg"} alt="Logo Café Dupond" className="h-full object-contain" />
             </div>
           </a>
+
           {/* Navigation desktop */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <div key={item.name} className="relative group">
-                <a
-                  href={item.link}
-                  className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
-                  onClick={(e) => {
-                    if (item.hasDropdown) {
-                      e.preventDefault()
-                      setIsDropdownOpen(!isDropdownOpen)
-                    } else {
-                      setActiveItem(item.name)
-                      setIsDropdownOpen(false)
-                    }
-                  }}
-                  style={{
-                    color: "white",
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontSize: "1.05rem",
-                    letterSpacing: "0.02em",
-                    opacity: activeItem === item.name ? 1 : 0.85,
-                  }}
-                >
-                  {item.name}
-                  {item.hasDropdown && (
-                    <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
-                  )}
-                  {activeItem === item.name && (
-                    <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
-                  )}
-                </a>
-
-                {/* Dropdown menu */}
-                {item.hasDropdown && (
-                  <div className="absolute left-0 mt-2 w-48 bg-amber-900/95 backdrop-blur-md rounded-lg shadow-lg overflow-hidden transform origin-top scale-0 group-hover:scale-100 transition-transform duration-300 z-50">
-                    {item.dropdownItems.map((dropdownItem) => (
-                      <a
-                        key={dropdownItem.name}
-                        href={dropdownItem.link}
-                        className="block px-4 py-3 text-white hover:bg-amber-800/50 transition-colors"
-                        onClick={() => {
-                          setActiveItem(item.name)
-                          setIsDropdownOpen(false)
-                        }}
-                      >
-                        {dropdownItem.name}
-                      </a>
-                    ))}
-                  </div>
+            {/* Accueil */}
+            <div className="relative group">
+              <Link
+                to='/'
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("Accueil")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Accueil" ? 1 : 0.85,
+                }}
+              >
+                Accueil
+                {activeItem === "Accueil" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
                 )}
-              </div>
-            ))}
+              </Link>
+            </div>
+
+            {/* À propos */}
+            <div className="relative group">
+              <a
+                href="#à-propos"
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("À propos")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "À propos" ? 1 : 0.85,
+                }}
+              >
+                À propos
+                {activeItem === "À propos" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </a>
+            </div>
+
+            {/* Nos atous */}
+            <div className="relative group">
+              <a
+                href="#nosatouts"
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("Nos atous")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Nos atous" ? 1 : 0.85,
+                }}
+              >
+                Nos atous
+                {activeItem === "Nos atous" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </a>
+            </div>
+
+            {/* Témoignage */}
+            <div className="relative group">
+              <a
+                href="#testimonials"
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("Témoignage")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Témoignage" ? 1 : 0.85,
+                }}
+              >
+                Témoignage
+                {activeItem === "Témoignage" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </a>
+            </div>
+
+            {/* Menu */}
+            
+            <div className="relative group">
+              <Link to='/menu'
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("menu")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Témoignage" ? 1 : 0.85,
+                }}
+              >
+                Menu
+                {activeItem === "menu" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </Link>
+            </div>
+            
+            {/* Galerie */}
+            <div className="relative group">
+              <Link to='/galerie'
+                
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("Galerie")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Témoignage" ? 1 : 0.85,
+                }}
+              >
+                Galerie
+                {activeItem === "Galerie" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </Link>
+            </div>
+
+            <div className="relative group">
+              <Link to='/developer'
+                
+                className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
+                onClick={() => {
+                  setActiveItem("developer")
+                  setIsDropdownOpen(false)
+                }}
+                style={{
+                  color: "white",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "1.05rem",
+                  letterSpacing: "0.02em",
+                  opacity: activeItem === "Témoignage" ? 1 : 0.85,
+                }}
+              >
+                Développeur
+                {activeItem === "developer" && (
+                  <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
+                )}
+              </Link>
+            </div>
           </nav>
+
           {/* Bouton mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -127,76 +226,221 @@ const Header = () => {
           }`}
         >
           <div className="py-3 px-2 bg-amber-900/95 backdrop-blur-md rounded-xl shadow-lg border border-amber-800">
-            {navItems.map((item, index) => (
-              <div key={item.name}>
-                <a
-                  href={item.link}
-                  style={{
-                    color: activeItem === item.name ? "white" : "rgba(255, 255, 255, 0.85)",
-                    transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
-                    opacity: isMenuOpen ? 1 : 0,
-                    transition: `all 0.3s ease ${0.1 + index * 0.05}s`,
-                    fontSize: "1rem",
-                    fontFamily: "'Montserrat', sans-serif",
-                    letterSpacing: "0.02em",
-                  }}
-                  className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
-                  onClick={(e) => {
-                    if (item.hasDropdown) {
-                      e.preventDefault()
-                      setIsDropdownOpen((prev) => (item.name === activeItem ? !prev : true))
-                      setActiveItem(item.name)
-                    } else {
-                      setActiveItem(item.name)
-                      setIsMenuOpen(false)
-                      setIsDropdownOpen(false)
-                    }
-                  }}
-                >
-                  <div className="flex items-center">
-                    <Coffee
-                      className="mr-3 h-4 w-4"
-                      style={{ color: activeItem === item.name ? "white" : "rgba(255, 255, 255, 0.7)" }}
-                    />
-                    {item.name}
-                  </div>
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isDropdownOpen && activeItem === item.name ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </a>
+            {/* Accueil - Mobile */}
+            <div>
+              <a
+                href="#accueil"
+                style={{
+                  color: activeItem === "Accueil" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.1}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("Accueil")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "Accueil" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Accueil
+                </div>
+              </a>
+            </div>
 
-                {/* Dropdown items for mobile */}
-                {item.hasDropdown && isDropdownOpen && activeItem === item.name && (
-                  <div className="ml-8 border-l border-amber-700/50 pl-4 py-1">
-                    {item.dropdownItems.map((dropdownItem) => (
-                      <a
-                        key={dropdownItem.name}
-                        href={dropdownItem.link}
-                        className="block py-2 px-3 text-white/80 hover:text-white transition-colors text-sm"
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsDropdownOpen(false)
-                        }}
-                      >
-                        {dropdownItem.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            {/* À propos - Mobile */}
+            <div>
+              <a
+                href="#à-propos"
+                style={{
+                  color: activeItem === "À propos" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.15}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("À propos")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "À propos" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  À propos
+                </div>
+              </a>
+            </div>
+
+            {/* Nos atous - Mobile */}
+            <div>
+              <a
+                href="#boutique"
+                style={{
+                  color: activeItem === "Nos atous" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.2}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("Nos atous")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "Nos atous" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Nos atous
+                </div>
+              </a>
+            </div>
+
+            {/* Témoignage - Mobile */}
+            <div>
+              <a
+                href="#testimonials"
+                style={{
+                  color: activeItem === "Témoignage" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.25}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("Témoignage")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "Témoignage" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Témoignage
+                </div>
+              </a>
+            </div>
+
+            {/* Menu - Mobile */}
+            <div>
+              <Link to='/menu'
+                style={{
+                  color: activeItem === "menu" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.25}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("Témoignage")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "menu" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Menu
+                </div>
+              </Link>
+            </div>
+
+            {/* Galerie - Mobile */}
+            <div>
+              <Link to='/galerie'
+                style={{
+                  color: activeItem === "galerie" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.25}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("Témoignage")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "galerie" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Galerie
+                </div>
+              </Link>
+            </div>
+
+            {/* Développeur - Mobile */}
+            <div>
+              <Link to='/developer'
+                style={{
+                  color: activeItem === "galerie" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transition: `all 0.3s ease ${0.25}s`,
+                  fontSize: "1rem",
+                  fontFamily: "'Montserrat', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
+                className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
+                onClick={() => {
+                  setActiveItem("developer")
+                  setIsMenuOpen(false)
+                  setIsDropdownOpen(false)
+                }}
+              >
+                <div className="flex items-center">
+                  <Coffee
+                    className="mr-3 h-4 w-4"
+                    style={{ color: activeItem === "developer" ? "white" : "rgba(255, 255, 255, 0.7)" }}
+                  />
+                  Développeur
+                </div>
+              </Link>
+            </div>
+
+
             <div
               className="mt-3 pt-3 border-t border-amber-800/50"
               style={{
                 opacity: isMenuOpen ? 1 : 0,
                 transition: "opacity 0.3s ease 0.3s",
               }}
-            >
-            </div>
+            ></div>
           </div>
         </div>
       </div>

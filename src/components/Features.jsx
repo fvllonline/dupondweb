@@ -40,7 +40,7 @@ const Features = () => {
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-b from-amber-50 to-amber-100/70 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-amber-50 to-amber-100/70 relative overflow-hidden" id="nosatouts">
       {/* Éléments décoratifs */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent z-10"></div>
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent z-10"></div>

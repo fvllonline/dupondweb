@@ -144,7 +144,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       className="py-24 bg-gradient-to-b from-amber-50 to-white relative overflow-hidden"
-      id="temoignages"
+      id="testimonials"
     >
       {/* Motif de fond subtil */}
       <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzdCM0YwMCIvPjwvc3ZnPg==')] bg-repeat"></div>
