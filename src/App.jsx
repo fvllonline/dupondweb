@@ -7,6 +7,7 @@ import Menu from "./components/Menu"
 import ContactForm from "./components/ContactForm"
 import Testimonials from "./components/Testimonials"
 import Footer from "./components/Footer"
+import Galerie from './components/Galerie'
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Features />
         <Menu />
         <Testimonials />
-        <ContactForm />       
+        <ContactForm />     
+        <Galerie />  
       <Footer />
     </div>
   )
