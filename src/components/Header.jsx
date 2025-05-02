@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-amber-900/90 backdrop-blur-md shadow-lg py-1" : "bg-black/20 py-1"
+        scrolled ? "bg-amber-900/90 backdrop-blur-md shadow-lg py-1" : "bg-black/40 py-1"
       }`}
       style={{ height: "auto" }} // Forcer une hauteur automatique
     >
@@ -108,14 +108,6 @@ const Header = () => {
               </div>
             ))}
           </nav>
-          {/* Bouton réservation (desktop) */}
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center px-5 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-full text-sm font-medium transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-300"
-          >
-            <Coffee className="w-4 h-4 mr-2" />
-            Réserver
-          </a>
           {/* Bouton mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -204,14 +196,6 @@ const Header = () => {
                 transition: "opacity 0.3s ease 0.3s",
               }}
             >
-              <a
-                href="#contact"
-                className="flex items-center justify-center px-4 py-2.5 bg-amber-700 hover:bg-amber-600 text-white rounded-lg text-sm font-medium transition-colors shadow-md"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Coffee className="w-4 h-4 mr-2" />
-                Réserver une table
-              </a>
             </div>
           </div>
         </div>
