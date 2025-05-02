@@ -123,10 +123,11 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-amber-300 mt-1 group-hover:text-amber-200 transition-colors" />
                 <div className="space-y-2">
                   <p className="font-medium text-white/90 group-hover:text-white transition-colors">
-                    Marina Mall, Casablanca
+                    Localisation Casablanca
                   </p>
-                  <p className="text-sm text-white/70">Maarif Urban Square Bd d'Anfa, Casablanca</p>
-                  <p className="text-sm text-white/70">Bd de Ghandi angle Bd Ibnou Sina, Casablanca</p>
+                  <p className="text-sm text-white/70">- Marina Mall</p>
+                  <p className="text-sm text-white/70">- Maarif Urban Square Bd d'Anfa</p>
+                  <p className="text-sm text-white/70">- Bd de Ghandi angle Bd Ibnou Sina</p>
                 </div>
               </li>
               <li className="flex items-center gap-3 group">

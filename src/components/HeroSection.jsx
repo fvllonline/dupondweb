@@ -27,7 +27,7 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Div pour créer un espace entre le header et le contenu - SOLUTION POUR LE RESPONSIVE */}
       <div className="absolute top-0 left-0 w-full h-16 md:h-0"></div>
 
