@@ -163,13 +163,13 @@ const Header = () => {
               </Link>
             </div>
 
-            {/* Développeur */}
+            {/* Réservation */}
             <div className="relative group">
               <Link
-                to="/developer"
+                to="/Réservation"
                 className="relative px-4 py-2 text-base font-medium transition-all duration-300 rounded-full hover:bg-white/10 flex items-center"
                 onClick={() => {
-                  setActiveItem("developer")
+                  setActiveItem("Réservation")
                   setIsDropdownOpen(false)
                 }}
                 style={{
@@ -180,8 +180,8 @@ const Header = () => {
                   opacity: activeItem === "developer" ? 1 : 0.85,
                 }}
               >
-                Développeur
-                {activeItem === "developer" && (
+                Réservation
+                {activeItem === "Réservation" && (
                   <span className="absolute left-[0%] right-0 bottom-0 mx-auto h-0.5 w-[60%] bg-amber-300 rounded-full transition-all duration-300" />
                 )}
               </Link>
@@ -338,12 +338,12 @@ const Header = () => {
               </Link>
             </div>
 
-            {/* Développeur - Mobile */}
+            {/* Réservation - Mobile */}
             <div>
               <Link
-                to="/developer"
+                to="/Réservation"
                 style={{
-                  color: activeItem === "developer" ? "white" : "rgba(255, 255, 255, 0.85)",
+                  color: activeItem === "Réservation" ? "white" : "rgba(255, 255, 255, 0.85)",
                   transform: isMenuOpen ? "translateX(0)" : "translateX(-20px)",
                   opacity: isMenuOpen ? 1 : 0,
                   transition: `all 0.3s ease ${0.3}s`,
@@ -353,7 +353,7 @@ const Header = () => {
                 }}
                 className="flex items-center justify-between px-4 py-2.5 my-1 rounded-lg text-base font-medium transition-all hover:bg-white/5 hover:text-white"
                 onClick={() => {
-                  setActiveItem("developer")
+                  setActiveItem("Réservation")
                   setIsMenuOpen(false)
                   setIsDropdownOpen(false)
                 }}
@@ -363,7 +363,7 @@ const Header = () => {
                     className="mr-3 h-4 w-4"
                     style={{ color: activeItem === "developer" ? "white" : "rgba(255, 255, 255, 0.7)" }}
                   />
-                  Développeur
+                  Réservation
                 </div>
               </Link>
             </div>

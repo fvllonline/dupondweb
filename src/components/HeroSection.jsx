@@ -103,7 +103,7 @@ const HeroSection = () => {
 
               {/* Boutons avec effets améliorés */}
               <div className="flex flex-wrap gap-3 md:gap-4">
-                <Link to="/menu">
+                <Link to="/Réservation">
                 <button className="group relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-xl transition-all duration-300 font-medium shadow-lg hover:shadow-amber-600/30 hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base">
                   <span className="relative z-10 flex items-center">
                     <CupSoda className="w-4 h-4 md:w-5 md:h-5 mr-2 transition-transform group-hover:rotate-12" />

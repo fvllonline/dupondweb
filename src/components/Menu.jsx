@@ -34,11 +34,11 @@ const Menu = () => {
       category: "chaud",
     },
     {
-      name: "Café Mocha",
+      name: "Mocktails",
       description: "Espresso, chocolat et lait mousseux",
       price: "52",
       image: menu4,
-      category: "chaud",
+      category: "froid",
     },
     {
       name: "Cappuccino",
@@ -55,17 +55,18 @@ const Menu = () => {
       category: "froid",
     },
     {
-      name: "Chocolat Mocha",
+      name: "Douceur spéciale",
       description: "Chocolat chaud avec une touche d'espresso",
       price: "55",
       image: menu7,
-      category: "chaud",
+      category: "froid",      
+      isNew: true,
     },
     {
       name: "Latte Vanille",
       description: "Café latte aromatisé à la vanille",
       price: "50",
-      isNew: true,
+
       image: menu8,
       category: "chaud",
     },
