@@ -191,7 +191,7 @@ const Header = () => {
           {/* Bouton mobile */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none transition-colors active:scale-95"
+            className="md:hidden p-2 rounded-full bg-gradient-to-r from-black to-black text-white hover:bg-white/20 focus:outline-none transition-colors active:scale-95"
             aria-expanded={isMenuOpen}
             aria-label="Menu"
           >

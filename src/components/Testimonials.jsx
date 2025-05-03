@@ -226,7 +226,7 @@ const Testimonials = () => {
                   <div className="absolute bottom-6 left-6 flex items-center gap-3 z-20">
                     <button
                       onClick={togglePlay}
-                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border transform hover:scale-110"
+                      className="w-12 h-12 rounded-full bg-gradient-to-r from-black to-black backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-all duration-300 border transform hover:scale-110"
                       disabled={videoError}
                     >
                       {isPlaying ? (
@@ -308,7 +308,7 @@ const Testimonials = () => {
             <div className="flex justify-between items-center mt-8">
               <button
                 onClick={prevTestimonial}
-                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:-translate-x-1"
+                className="group w-14 h-14 rounded-full bg-gradient-to-r from-black to-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:-translate-x-1"
                 disabled={isTransitioning}
               >
                 <ChevronLeft className="w-6 h-6 text-amber-700 group-hover:-translate-x-0.5 transition-transform" />
@@ -358,7 +358,7 @@ const Testimonials = () => {
 
               <button
                 onClick={nextTestimonial}
-                className="group w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:translate-x-1"
+                className="group w-14 h-14 rounded-full bg-gradient-to-r from-black to-black flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-100 transform hover:translate-x-1"
                 disabled={isTransitioning}
               >
                 <ChevronRight className="w-6 h-6 text-amber-700 group-hover:translate-x-0.5 transition-transform" />

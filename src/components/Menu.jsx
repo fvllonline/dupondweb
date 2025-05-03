@@ -179,8 +179,8 @@ const Menu = () => {
               onClick={() => setActiveFilter("tous")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === "tous"
-                  ? "bg-amber-700 text-white shadow-lg"
-                  : "bg-white/80 text-amber-800 hover:bg-amber-100"
+                  ? "bg-gradient-to-r from-amber-700 to-amber-700 text-white shadow-lg"
+                  : "bg-gradient-to-r from-amber-500 to-amber-500 text-amber-800 hover:bg-amber-100"
               }`}
             >
               Tous
@@ -189,9 +189,9 @@ const Menu = () => {
               onClick={() => setActiveFilter("chaud")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === "chaud"
-                  ? "bg-amber-700 text-white shadow-lg"
-                  : "bg-white/80 text-amber-800 hover:bg-amber-100"
-              }`}
+                ? "bg-gradient-to-r from-amber-700 to-amber-700 text-white shadow-lg"
+                : "bg-gradient-to-r from-amber-500 to-amber-500 text-amber-800 hover:bg-amber-100"
+            }`}
             >
               Cafés Chauds
             </button>
@@ -199,9 +199,9 @@ const Menu = () => {
               onClick={() => setActiveFilter("froid")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === "froid"
-                  ? "bg-amber-700 text-white shadow-lg"
-                  : "bg-white/80 text-amber-800 hover:bg-amber-100"
-              }`}
+                ? "bg-gradient-to-r from-amber-700 to-amber-700 text-white shadow-lg"
+                : "bg-gradient-to-r from-amber-500 to-amber-500 text-amber-800 hover:bg-amber-100"
+            }`}
             >
               Cafés Froids
             </button>
@@ -216,7 +216,7 @@ const Menu = () => {
                   placeholder="Rechercher un café..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-transparent border-none outline-none text-amber-900 placeholder-amber-400 w-40 md:w-60"
+                  className="bg-transparent border-none outline-none text-amber-900 placeholder-amber-900 w-40 md:w-60"
                 />
                 <button
                   onClick={() => {
@@ -231,7 +231,7 @@ const Menu = () => {
             ) : (
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full text-amber-800 hover:bg-white transition-colors shadow-md"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-500 rounded-full text-amber-800 hover:bg-white transition-colors shadow-md"
               >
                 <Search className="w-4 h-4" />
                 <span className="text-sm font-medium">Rechercher</span>

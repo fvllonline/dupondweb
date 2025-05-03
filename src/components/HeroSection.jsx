@@ -110,12 +110,12 @@ const HeroSection = () => {
                   <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                 </button>
 
-                <button className="group relative overflow-hidden border-2 border-amber-200/50 hover:border-amber-200 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-xl transition-all duration-300 font-medium backdrop-blur-sm transform hover:-translate-y-1 text-sm sm:text-base">
+                <button className="group relative overflow-hidden border-2 bg-gradient-to-r from-black to-black border-amber-200/50 hover:border-amber-200 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-xl transition-all duration-300 font-medium backdrop-blur-sm transform hover:-translate-y-1 text-sm sm:text-base">
                   <span className="relative z-10 flex items-center">
                     NOTRE CARTE
                     <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                 </button>
               </div>
             </div>
