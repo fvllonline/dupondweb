@@ -142,8 +142,8 @@ const ContactForm = () => {
                     </div>
                     <div>
                       <h4 className="text-white font-medium mb-2">Téléphone</h4>
-                      <p className="text-white/80">+212 522 00 00 00</p>
-                      <p className="text-white/80">+212 661 00 00 00</p>
+                      <p className="text-white/80">+212 XXX-XXXXXX</p>
+                      <p className="text-white/80">+212 XXX-XXXXXX</p>
                     </div>
                   </div>
 
@@ -164,8 +164,7 @@ const ContactForm = () => {
                     </div>
                     <div>
                       <h4 className="text-white font-medium mb-2">Horaires</h4>
-                      <p className="text-white/80">Lun - Ven: 7h30 - 22h00</p>
-                      <p className="text-white/80">Sam - Dim: 8h00 - 00h00</p>
+                      <p className="text-white/80">Tous les jours : 7h30 - 00h00</p>
                     </div>
                   </div>
                 </div>

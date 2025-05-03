@@ -18,53 +18,53 @@ import logorond from "../assets/logorond.png"
 
 const Menu = () => {
   const coffees = [
-    { name: "Café Latte", description: "Espresso et lait mousseux", price: "4.50", image: menu1, category: "chaud" },
+    { name: "Café Latte", description: "Espresso et lait mousseux", price: "45", image: menu1, category: "chaud" },
     {
       name: "Café Américano",
       description: "Espresso allongé à l'eau chaude",
-      price: "3.80",
+      price: "38",
       image: menu2,
       category: "chaud",
     },
     {
       name: "Macchiato",
       description: "Espresso tâché d'une touche de lait",
-      price: "4.00",
+      price: "40",
       image: menu3,
       category: "chaud",
     },
     {
       name: "Café Mocha",
       description: "Espresso, chocolat et lait mousseux",
-      price: "5.20",
+      price: "52",
       image: menu4,
       category: "chaud",
     },
     {
       name: "Cappuccino",
       description: "Espresso, lait chaud et mousse de lait",
-      price: "4.50",
+      price: "45",
       image: menu5,
       category: "chaud",
     },
     {
       name: "Café Glacé",
       description: "Espresso, lait froid et glaçons",
-      price: "4.80",
+      price: "48",
       image: menu6,
       category: "froid",
     },
     {
       name: "Chocolat Mocha",
       description: "Chocolat chaud avec une touche d'espresso",
-      price: "5.50",
+      price: "55",
       image: menu7,
       category: "chaud",
     },
     {
       name: "Latte Vanille",
       description: "Café latte aromatisé à la vanille",
-      price: "5.00",
+      price: "50",
       isNew: true,
       image: menu8,
       category: "chaud",
@@ -72,15 +72,15 @@ const Menu = () => {
     {
       name: "Frappuccino",
       description: "Latte servi avec des glaçons",
-      price: "4.80",
+      price: "48",
       image: menu9,
       category: "froid",
     },
-    { name: "Espresso", description: "L'essence pure du café", price: "2.80", image: menu10, category: "chaud" },
+    { name: "Espresso", description: "L'essence pure du café", price: "28", image: menu10, category: "chaud" },
     {
       name: "Caramel Latte",
       description: "Café latte avec sirop de caramel",
-      price: "5.00",
+      price: "50",
       isNew: true,
       image: menu11,
       category: "chaud",
@@ -88,7 +88,7 @@ const Menu = () => {
     {
       name: "Flat White",
       description: "Espresso équilibré avec du lait",
-      price: "3.90",
+      price: "39",
       image: menu12,
       category: "chaud",
     },
@@ -286,7 +286,7 @@ const Menu = () => {
                   <div className="absolute -top-10 right-6 w-[60px] h-[60px] rounded-full bg-gradient-to-br from-amber-200 to-amber-100 flex items-center justify-center shadow-xl rotate-12 group-hover:rotate-0 transition-transform duration-500 z-20">
                     <div className="w-[56px] h-[56px] rounded-full border-2 border-dashed border-amber-700/30 flex items-center justify-center">
                       <div className="text-center transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                        <span className="text-amber-800 font-bold">{coffee.price}€</span>
+                        <span className="text-amber-800 font-bold">{coffee.price}Dh</span>
                       </div>
                     </div>
                   </div>

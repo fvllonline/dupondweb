@@ -167,31 +167,31 @@ const AboutDev = () => {
                 <p className="text-sm font-medium text-amber-800 mb-3">Réseaux sociaux</p>
                 <div className="flex gap-3">
                   <a
-                    href="https://facebook.com/nawfal.addaoui"
+                    href="https://www.facebook.com/naoufal.addaoui.3/?locale=fr_FR"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-amber-900 text-white rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
                     aria-label="Facebook"
                   >
-                    <Facebook size={18} />
+                    <Facebook size={18} className="text-white"/>
                   </a>
                   <a
-                    href="https://instagram.com/nawfal.addaoui"
+                    href="https://instagram.com/fvllonline"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-amber-900 text-white rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
                     aria-label="Instagram"
                   >
-                    <Instagram size={18} />
+                    <Instagram size={18} className="text-white" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/nawfal-addaoui"
+                    href="https://www.linkedin.com/in/nawfal-addaoui-40b651248/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-amber-900 text-white rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin size={18} />
+                    <Linkedin size={18} className="text-white"/>
                   </a>
                 </div>
               </div>

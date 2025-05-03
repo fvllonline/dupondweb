@@ -6,6 +6,8 @@ import feat1 from "../assets/feat1.jpg"
 import feat2 from "../assets/feat2.jpg"
 import feat3 from "../assets/feat3.jpg"
 import feat4 from "../assets/feat4.jpg"
+// import Link from "react-router-dom"
+
 
 const Features = () => {
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -19,19 +21,19 @@ const Features = () => {
       imagePath: feat1,
     },
     {
-      title: "Baristas Experts",
+      title: "Boissons froides",
       description: "Notre équipe de baristas passionnés maîtrise l'art de la préparation du café à la perfection.",
       icon: <Award className="w-6 h-6" />,
       imagePath: feat2,
     },
     {
-      title: "Boutique en Ligne",
+      title: "Glace à Café",
       description: "Retrouvez nos cafés préférés et accessoires directement sur notre boutique en ligne.",
       icon: <ShoppingBag className="w-6 h-6" />,
       imagePath: feat3,
     },
     {
-      title: "Machines à Café",
+      title: "Cakes & chocolats",
       description:
         "Nous utilisons uniquement des équipements de qualité professionnelle pour extraire le meilleur de chaque grain.",
       icon: <Cpu className="w-6 h-6" />,

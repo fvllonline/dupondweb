@@ -1,5 +1,6 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa"
 import { Coffee, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import LogoBlanc from "../assets/logoblanc.png"
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -24,45 +25,57 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         {/* Logo et tagline */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 pb-8 border-b border-amber-700/30">
+        {/* <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 pb-8 border-b border-amber-700/30">
           <div className="flex items-center mb-6 md:mb-0">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-300 to-amber-200 flex items-center justify-center shadow-lg mr-4">
-              <Coffee className="w-6 h-6 text-amber-900" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-serif italic font-bold text-amber-100">Café Dupond</h2>
-              <p className="text-amber-300/80 text-sm">L'art du café à la française</p>
-            </div>
+            <img src={LogoBlanc} alt="error" />
           </div>
 
           <div className="flex space-x-3">
             <a
-              href="#"
+              href="https://www.facebook.com/dupondcafe/?locale=fr_FR"
+              target="_blank"
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors transform hover:scale-110 duration-300"
               aria-label="Facebook"
             >
               <FaFacebookF className="text-white text-lg" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/dupondcafe/"
+              target="_blank"
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors transform hover:scale-110 duration-300"
               aria-label="Instagram"
             >
               <FaInstagram className="text-white text-lg" />
             </a>
+          </div>
+        </div> */}
+
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 pb-8 border-b border-amber-700/30">
+          <a href="#">
+          <div className="flex items-center mb-6 md:mb-0">
+            <img 
+              src={LogoBlanc} 
+              alt="Logo Dupond Café" 
+              className="max-w-[180px] h-auto"  // Contrôle de la taille
+            />
+          </div>
+          </a>
+          <div className="flex space-x-3">
             <a
-              href="#"
+              href="https://www.facebook.com/dupondcafe/?locale=fr_FR"
+              target="_blank"
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors transform hover:scale-110 duration-300"
-              aria-label="Twitter"
+              aria-label="Facebook"
             >
-              <FaTwitter className="text-white text-lg" />
+              <FaFacebookF className="text-white text-lg" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/dupondcafe/"
+              target="_blank"
               className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors transform hover:scale-110 duration-300"
-              aria-label="LinkedIn"
+              aria-label="Instagram"
             >
-              <FaLinkedinIn className="text-white text-lg" />
+              <FaInstagram className="text-white text-lg" />
             </a>
           </div>
         </div>
@@ -79,7 +92,8 @@ const Footer = () => {
               pousse à rechercher l'excellence à chaque tasse.
             </p>
             <a
-              href="#"
+              href="https://www.instagram.com/dupondcafe/"
+              target="_blank"
               className="inline-flex items-center text-amber-300 hover:text-amber-200 transition-colors group"
             >
               <span>En savoir plus</span>
@@ -96,15 +110,9 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex justify-between items-center pb-2 border-b border-white/10 group">
                 <span className="font-medium text-white/80 group-hover:text-white transition-colors">
-                  Lundi - Vendredi
+                  Tous les jours
                 </span>
-                <span className="text-amber-200 group-hover:text-amber-100 transition-colors">7h30 - 22h00</span>
-              </li>
-              <li className="flex justify-between items-center pb-2 border-b border-white/10 group">
-                <span className="font-medium text-white/80 group-hover:text-white transition-colors">
-                  Samedi - Dimanche
-                </span>
-                <span className="text-amber-200 group-hover:text-amber-100 transition-colors">8h00 - 00h00</span>
+                <span className="text-amber-200 group-hover:text-amber-100 transition-colors">7h30 - 00h00</span>
               </li>
               <li className="pt-2">
                 <p className="text-sm italic text-white/60">Fermé les jours fériés</p>
@@ -133,7 +141,7 @@ const Footer = () => {
               <li className="flex items-center gap-3 group">
                 <Phone className="w-5 h-5 text-amber-300 group-hover:text-amber-200 transition-colors" />
                 <a href="tel:+212522000000" className="text-white/90 group-hover:text-white transition-colors">
-                  +212 522 00 00 00
+                  +212 XXX-XXXXXX
                 </a>
               </li>
               <li className="flex items-center gap-3 group">
@@ -189,9 +197,13 @@ const Footer = () => {
             <a href="#" className="hover:text-amber-300 transition-colors">
               Politique de confidentialité
             </a>
-            <p>
-              Développé par <span className="text-amber-300">NAWFAL ADDAOUI</span>
-            </p>
+              <p>
+                Développé par 
+                <a href="https://nawfalsportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <span className="text-amber-300">  NAWFAL ADDAOUI</span>
+                </a>
+              </p>
+            
           </div>
         </div>
       </div>

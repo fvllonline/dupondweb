@@ -45,7 +45,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-12 sm:h-14 md:h-16">
           {/* Logo */}
-          <a href="#accueil" className="relative flex items-center group" onClick={() => setActiveItem("Accueil")}>
+          <a href="#" className="relative flex items-center group" onClick={() => setActiveItem("Accueil")}>
             <div className="relative h-8 sm:h-10 md:h-12 w-auto mr-2 transition-transform duration-300 group-hover:scale-105">
               <img src={logo || "/placeholder.svg"} alt="Logo Café Dupond" className="h-full object-contain" />
             </div>

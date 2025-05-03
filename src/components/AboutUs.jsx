@@ -195,7 +195,7 @@ const AboutUs = () => {
             </div>
 
             {/* Citation avec style amélioré */}
-            <blockquote className="relative bg-gradient-to-r from-amber-100/50 to-transparent p-6 rounded-lg my-8 border-l-4 border-amber-700/50">
+            {/* <blockquote className="relative bg-gradient-to-r from-amber-100/50 to-transparent p-6 rounded-lg my-8 border-l-4 border-amber-700/50">
               <div className="absolute top-2 left-2 text-amber-300/20 transform -rotate-12">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.9999 9.00001C11.9999 12.5 9.49994 10.5 9.49994 13.5C9.49994 14.9 10.5999 16 11.9999 16C13.3999 16 14.4999 14.9 14.4999 13.5C14.4999 12.1 13.3999 11 11.9999 11V9.00001ZM11.9999 7.00001V9.00001C14.2099 9.00001 15.9999 11.01 15.9999 13.5C15.9999 15.99 14.2099 18 11.9999 18C9.78994 18 7.99994 15.99 7.99994 13.5C7.99994 8.50001 11.9999 9.50001 11.9999 7.00001ZM17.9999 13.5C17.9999 15.5 16.5 16 16.5 16C16.5 16 18 15.5 18 13.5C18 11.5 16.5 11 16.5 11C16.5 11 17.9999 11.5 17.9999 13.5ZM6.49994 13.5C6.49994 15.5 4.99994 16 4.99994 16C4.99994 16 6.49994 15.5 6.49994 13.5C6.49994 11.5 4.99994 11 4.99994 11C4.99994 11 6.49994 11.5 6.49994 13.5Z" />
@@ -205,9 +205,10 @@ const AboutUs = () => {
                 "Le café est une affaire sérieuse qui mérite d'être traitée avec respect et créativité."
               </p>
               <footer className="text-amber-700 font-medium mt-2 text-right">— Vincent Dupond</footer>
-            </blockquote>
+            </blockquote> */}
 
             {/* Bouton avec effet comme HeroSection */}
+            <a href="https://www.instagram.com/dupondcafe/" target="_blank">
             <button className="group relative overflow-hidden bg-gradient-to-r from-amber-700 to-amber-600 text-white px-8 py-3.5 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-amber-900/30 transform hover:-translate-y-1">
               <span className="relative z-10 flex items-center">
                 <Coffee className="w-5 h-5 mr-2 transition-transform group-hover:rotate-12" />
@@ -215,6 +216,7 @@ const AboutUs = () => {
               </span>
               <span className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
             </button>
+            </a>
           </div>
         </div>
       </div>

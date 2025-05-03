@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronDown, Coffee, CupSoda, Clock, CandyIcon, MapPin, ArrowRight } from "lucide-react"
 import herobg from "../assets/herobg.jpg"
+import { Link } from "react-router-dom"
 
 const HeroSection = () => {
   const [scrolled, setScrolled] = useState(0)
@@ -102,6 +103,7 @@ const HeroSection = () => {
 
               {/* Boutons avec effets améliorés */}
               <div className="flex flex-wrap gap-3 md:gap-4">
+                <Link to="/menu">
                 <button className="group relative overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-xl transition-all duration-300 font-medium shadow-lg hover:shadow-amber-600/30 hover:shadow-xl transform hover:-translate-y-1 text-sm sm:text-base">
                   <span className="relative z-10 flex items-center">
                     <CupSoda className="w-4 h-4 md:w-5 md:h-5 mr-2 transition-transform group-hover:rotate-12" />
@@ -109,7 +111,8 @@ const HeroSection = () => {
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                 </button>
-
+                </Link>
+                <Link to="/menu">
                 <button className="group relative overflow-hidden border-2 bg-gradient-to-r from-black to-black border-amber-200/50 hover:border-amber-200 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-xl transition-all duration-300 font-medium backdrop-blur-sm transform hover:-translate-y-1 text-sm sm:text-base">
                   <span className="relative z-10 flex items-center">
                     NOTRE CARTE
@@ -117,6 +120,7 @@ const HeroSection = () => {
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                 </button>
+                </Link>
               </div>
             </div>
           </div>
